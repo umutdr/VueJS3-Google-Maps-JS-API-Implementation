@@ -4,6 +4,7 @@ import { POINT_MARKER_ICON_CONFIG } from '@/constants/mapSettings';
 export default {
   data: () => ({
     marker: null,
+    iconBaseUri: 'http://earth.google.com/images/kml-icons/track-directional/',
   }),
   props: {
     lat: { type: Number, required: true },
@@ -14,8 +15,8 @@ export default {
       this.marker = new window.google.maps.Marker({
         position: { lat: this.lat, lng: this.lng },
         map: map,
-        draggable: true,
         animation: google.maps.Animation.DROP,
+        icon: this.iconBaseUri + 'track-0.png',
       });
 
       this.marker.addListener('click', () => {
